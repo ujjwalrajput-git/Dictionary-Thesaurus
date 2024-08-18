@@ -74,7 +74,7 @@ function fetchWordMeaning(selectedText) {
             font-size: 14px;
         ">X</button>`;
 
-        const audioButton = audio ? `<button style="
+        const audioButton = audio ? `<button id="play-audio-btn" style="
             background-color: #2196F3;
             color: white;
             border: none;
@@ -83,7 +83,7 @@ function fetchWordMeaning(selectedText) {
             border-radius: 5px;
             margin-top: 10px;
             font-size: 14px;
-        " onclick="new Audio('${audio}').play()">🔊 Pronunciation</button>` : '';
+        ">🔊 Pronunciation</button>` : '';
 
         overlay.innerHTML = `
             <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">${word}</div>
@@ -94,6 +94,18 @@ function fetchWordMeaning(selectedText) {
         `;
 
         document.body.appendChild(overlay);
+
+        if (audio) {
+            fetch(audio)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    document.getElementById('play-audio-btn').addEventListener('click', () => {
+                        new Audio(url).play();
+                    });
+                })
+                .catch(error => console.error("Failed to load audio:", error));
+        }
 
         document.getElementById('close-btn').addEventListener('click', () => {
             overlay.remove();
