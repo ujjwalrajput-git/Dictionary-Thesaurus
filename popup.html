@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary & Thesaurus</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            width: 320px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background-color: #1976d2;
+        }
+
+        .result {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .word {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .definition,
+        .synonyms {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .synonyms {
+            color: #666;
+        }
+
+        .audio-button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .audio-button:hover {
+            background-color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="searchInput" placeholder="Enter a word...">
+    <button id="searchBtn">Search</button>
+    <div id="result" class="result"></div>
+    <script src="popup.js"></script>
+</body>
+</html>
