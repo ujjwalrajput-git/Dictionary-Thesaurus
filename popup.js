@@ -13,8 +13,9 @@ function searchWord() {
     const word = document.getElementById('searchInput').value.trim();
     const resultDiv = document.getElementById('result');
     
-    // Initially hide the result box
+    // Initially hide the result box and remove the show class
     resultDiv.style.display = 'none';
+    resultDiv.classList.remove('show');
 
     if (word) {
         const apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
@@ -43,8 +44,9 @@ function searchWord() {
                     resultDiv.innerHTML = `<div class="word">No results found for "${word}".</div>`;
                 }
 
-                // Show the result box after content is loaded
+                // Show the result box with animation
                 resultDiv.style.display = 'block';
+                setTimeout(() => resultDiv.classList.add('show'), 10);
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
@@ -52,6 +54,7 @@ function searchWord() {
                 
                 // Show the result box even in case of an error
                 resultDiv.style.display = 'block';
+                setTimeout(() => resultDiv.classList.add('show'), 10);
             });
     }
 }

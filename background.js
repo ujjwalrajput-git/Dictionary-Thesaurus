@@ -54,7 +54,7 @@ function fetchWordMeaning(selectedText) {
         overlay.style.top = '20px';
         overlay.style.right = '20px';
         overlay.style.padding = '15px';
-        overlay.style.backgroundColor = '#ffffff';
+        overlay.style.backgroundColor = '#e0f7fa';
         overlay.style.border = '1px solid #ccc';
         overlay.style.borderRadius = '10px';
         overlay.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
