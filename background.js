@@ -54,14 +54,17 @@ function fetchWordMeaning(selectedText) {
         overlay.style.top = '20px';
         overlay.style.right = '20px';
         overlay.style.padding = '15px';
-        overlay.style.backgroundColor = '#e0f7fa';
+        overlay.style.backgroundColor = '#ffffff';
         overlay.style.border = '1px solid #ccc';
         overlay.style.borderRadius = '10px';
         overlay.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
         overlay.style.zIndex = 10000;
-        overlay.style.width = '300px';
+        overlay.style.width = '320px';
         overlay.style.fontFamily = 'Arial, sans-serif';
         overlay.style.color = '#333';
+        overlay.style.opacity = 0;
+        overlay.style.transform = 'translateY(20px)';
+        overlay.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
 
         const closeButton = `<button id="close-btn" style="
             background-color: #f44336;
@@ -75,7 +78,7 @@ function fetchWordMeaning(selectedText) {
         ">X</button>`;
 
         const audioButton = audio ? `<button id="play-audio-btn" style="
-            background-color: #2196F3;
+            background-color: #00796b;
             color: white;
             border: none;
             padding: 8px 12px;
@@ -83,17 +86,42 @@ function fetchWordMeaning(selectedText) {
             border-radius: 5px;
             margin-top: 10px;
             font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         ">🔊 Pronunciation</button>` : '';
 
         overlay.innerHTML = `
-            <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">${word}</div>
+            <div style="font-weight: bold; font-size: 22px; margin-bottom: 10px; color: #00796b; text-transform: capitalize;">${word}</div>
             <div style="font-size: 14px;">Definition: ${definition}</div>
-            <div style="margin-top: 10px; color: #555; font-size: 14px;">Synonyms: ${synonyms}</div>
+            <div style="margin-top: 10px; color: #666; font-size: 14px;">Synonyms: ${synonyms}</div>
             ${audioButton}
             ${closeButton}
         `;
 
         document.body.appendChild(overlay);
+        
+        setTimeout(() => {
+            overlay.style.opacity = 1;
+            overlay.style.transform = 'translateY(0)';
+        }, 10);
+
+        function closePopup() {
+            overlay.style.opacity = 0;
+            overlay.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                overlay.remove();
+                document.removeEventListener('click', onClickOutside);
+            }, 400);
+        }
+
+        function onClickOutside(event) {
+            if (!overlay.contains(event.target)) {
+                closePopup();
+            }
+        }
+
+        document.getElementById('close-btn').addEventListener('click', closePopup);
+        document.addEventListener('click', onClickOutside);
 
         if (audio) {
             fetch(audio)
@@ -106,9 +134,5 @@ function fetchWordMeaning(selectedText) {
                 })
                 .catch(error => console.error("Failed to load audio:", error));
         }
-
-        document.getElementById('close-btn').addEventListener('click', () => {
-            overlay.remove();
-        });
     }
 }
