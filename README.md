@@ -11,6 +11,32 @@ A lightweight Chrome extension that enables users to quickly find the meaning, p
 
 ## 🎥 Demo
 
+<table>
+<tr>
+<td>
+
+![Demo GIF - context menu](icons/demo-context-menu.gif)
+
+**Right-Click Word Lookup**
+1. Select a word  
+2. Right-click on it  
+3. Click find meaning  
+
+</td>
+<td style="border-left: 1px solid #ddd; padding-left: 20px;">
+
+![Demo GIF - action icon](icons/demo-search.gif)
+
+**Action Icon Search**
+1. Click on the action icon from the extensions  
+2. Type the word  
+3. Search  
+
+</td>
+</tr>
+</table>
+
+<!-- 
 <div style="display: flex; gap: 20px;">
 
 <div>
@@ -31,7 +57,7 @@ A lightweight Chrome extension that enables users to quickly find the meaning, p
 3️⃣ Search  
 </div>
 
-</div>
+</div> -->
 
 ## 🛠 Installation
 
