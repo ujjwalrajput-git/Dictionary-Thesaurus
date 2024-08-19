@@ -23,7 +23,7 @@ A lightweight Chrome extension that enables users to quickly find the meaning, p
 3. Click find meaning  
 
 </td>
-<td style="border-left: 1px solid #ddd; padding-left: 20px;">
+<td>
 
 ![Demo GIF - action icon](icons/demo-search.gif)
 
